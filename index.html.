@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CLIENT BUSINESS NAME | Digital Business Card</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #020617;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.15);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: rgba(148, 163, 184, 0.3);
+      --radius-xl: 1.4rem;
+      --shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(37, 99, 235, 0.35), transparent 50%),
+        #020617;
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 1.5rem 1rem;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 480px;
+      background: radial-gradient(circle at top left, #111827, #020617 70%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 1.5rem 1.5rem 1.3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0 0, rgba(59, 130, 246, 0.2), transparent 60%),
+        radial-gradient(circle at 100% 0, rgba(14, 165, 233, 0.18), transparent 60%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .logo-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #4f46e5, #0ea5e9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.9);
+    }
+
+    .title-block h1 {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+
+    .title-block p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .tagline {
+      margin-bottom: 0.9rem;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+    }
+
+    .section-title {
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .services-list {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .services-list li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .contact-buttons {
+      display: grid;
+      grid-template-columns: 1.3fr 1.3fr;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.8rem;
+      border: 1px solid transparent;
+      outline: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #6366f1, #0ea5e9);
+      color: white;
+      box-shadow: 0 10px 28px rgba(79, 70, 229, 0.8);
+      border-color: transparent;
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.06);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(229, 231, 235, 0.95);
+      color: var(--text);
+      background: rgba(15, 23, 42, 1);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1.4fr;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-item {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .info-item span.label {
+      display: block;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(148, 163, 184, 0.9);
+      margin-bottom: 0.15rem;
+    }
+
+    .info-item span.value {
+      color: #e5e7eb;
+    }
+
+    form {
+      margin-top: 0.4rem;
+      display: grid;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.1rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.7rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text);
+      outline: none;
+      font-size: 0.78rem;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.8);
+    }
+
+    textarea {
+      min-height: 70px;
+    }
+
+    .form-note {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .footer {
+      margin-top: 0.7rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding-inline: 1.2rem;
+      }
+      .contact-buttons {
+        grid-template-columns: 1fr;
+      }
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="glow"></div>
+    <div class="card-inner">
+      <!-- HEADER -->
+      <div class="header">
+        <div class="logo-circle">B</div>
+        <div class="title-block">
+          <h1>CLIENT BUSINESS NAME</h1>
+          <p>Category or short descriptor (e.g. Salon • Repairs • Coaching)</p>
+        </div>
+      </div>
+
+      <!-- TAGLINE -->
+      <p class="tagline">
+        Short strong tagline for the business — what they do and why people should trust them.
+      </p>
+
+      <!-- META TAGS -->
+      <div class="meta">
+        <span class="pill">Verified business</span>
+        <span class="pill">WhatsApp enabled</span>
+        <span class="pill">Mobile-friendly card</span>
+      </div>
+
+      <!-- CONTACT BUTTONS -->
+      <div class="section-title">Contact & quick actions</div>
+      <p class="section-sub">Reach this business instantly via WhatsApp or one-tap call.</p>
+
+      <div class="contact-buttons">
+        <button class="btn btn-primary" onclick="openWhatsApp()">
+          WhatsApp now
+        </button>
+        <a class="btn btn-outline" href="tel:+91XXXXXXXXXX">
+          Call: +91 XXXXX-XXXXX
+        </a>
+      </div>
+
+      <!-- INFO GRID -->
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="label">Address</span>
+          <span class="value">Business address here, city, state</span>
+        </div>
+        <div class="info-item">
+          <span class="label">Working hours</span>
+          <span class="value">Mon–Sat: 9:00 AM – 8:00 PM<br>Sun: Closed / custom</span>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+        <div class="section-title">Services</div>
+        <p class="section-sub">Main services offered by this business.</p>
+        <ul class="services-list">
+          <li>Service 1 (e.g. Haircut, Bike service, Tutoring, etc.)</li>
+          <li>Service 2 (e.g. Hair colouring, Engine repair, Exam coaching)</li>
+          <li>Service 3 (e.g. Bridal makeup, Full service, Online classes)</li>
+        </ul>
+      </div>
+
+      <!-- MESSAGE FORM -->
+      <div>
+        <div class="section-title">Send a WhatsApp message</div>
+        <p class="section-sub">Fill this and WhatsApp will open with your message ready to send.</p>
+
+        <form id="wa-form">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" type="text" placeholder="Enter your name" required />
+          </div>
+          <div>
+            <label for="need">What do you need?</label>
+            <textarea id="need" placeholder="Briefly describe your enquiry..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Open WhatsApp with message
+          </button>
+          <p class="form-note">
+            This does not send automatically. It opens WhatsApp with a pre-typed message so you can review and send.
+          </p>
+        </form>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        Digital card powered by PRABA WEBS
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // CHANGE THIS to client's full WhatsApp number with country code
+    const CLIENT_WHATSAPP = "919999999999"; // example: 919944136436
+
+    function openWhatsApp() {
+      const base = "https://wa.me/" + CLIENT_WHATSAPP;
+      const text = encodeURIComponent("Hi, I saw your digital business card and I want to know more about your services.");
+      window.open(base + "?text=" + text, "_blank");
+    }
+
+    const form = document.getElementById("wa-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const need = document.getElementById("need").value.trim();
+
+      const base = "https://wa.me/" + CLIENT_WHATSAPP;
+      const message = `Hi, my name is ${name}.\n\nI saw your digital business card and I need:\n${need}`;
+      const url = base + "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
