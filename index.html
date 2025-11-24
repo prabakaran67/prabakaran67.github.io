@@ -1,1 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRABA WEBS | Modern Websites for Serious Businesses</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #030712;
+      --accent: #6366f1;
+      --accent-2: #0ea5e9;
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: rgba(148, 163, 184, 0.28);
+      --radius-xl: 1.6rem;
+      --shadow-soft: 0 26px 70px rgba(0, 0, 0, 0.9);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(56, 189, 248, 0.08), transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(129, 140, 248, 0.14), transparent 55%),
+        #020617;
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+      overflow-x: hidden;
+      animation: bg-shift 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes bg-shift {
+      0% {
+        background-position: 0 0, 100% 0, 0 0;
+      }
+      50% {
+        background-position: 10% -8%, 90% -5%, 0 0;
+      }
+      100% {
+        background-position: 0 -12%, 100% -10%, 0 0;
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HEADER / NAV */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(2, 6, 23, 0.96),
+        rgba(2, 6, 23, 0.75),
+        transparent
+      );
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo-pill {
+      padding: 0.3rem 0.8rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.42), rgba(15, 23, 42, 0.96));
+      box-shadow: 0 0 18px rgba(79, 70, 229, 0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img {
+      height: 30px;
+      width: auto;
+      display: block;
+    }
+
+    .logo-sub {
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: 10rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      inset: auto 10% -2px 10%;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(31, 41, 55, 0.8);
+    }
+
+    .nav-links a.active {
+      color: #e5e7eb;
+      background: rgba(79, 70, 229, 0.24);
+      box-shadow: 0 0 18px rgba(79, 70, 229, 0.7);
+    }
+
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      outline: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f46e5, #6366f1, #0ea5e9);
+      color: white;
+      box-shadow: 0 12px 30px rgba(79, 70, 229, 0.8);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--muted);
+      border-color: rgba(148, 163, 184, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.02);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(79, 70, 229, 1);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(229, 231, 235, 0.9);
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* BUTTON RIPPLE */
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.25);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .btn.ripple {
+      animation: ripple-shadow 0.35s ease-out;
+    }
+
+    @keyframes ripple-shadow {
+      from { box-shadow: 0 0 0 rgba(255, 255, 255, 0.2); }
+      to   { box-shadow: 0 0 0 rgba(255, 255, 255, 0); }
+    }
+
+    /* HERO */
+
+    main {
+      position: relative;
+    }
+
+    .glow-orb {
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(59, 130, 246, 0.33), transparent 60%),
+        radial-gradient(circle at 70% 100%, rgba(14, 165, 233, 0.22), transparent 60%);
+      filter: blur(4px);
+      opacity: 0.4;
+      top: 12%;
+      right: -120px;
+      pointer-events: none;
+      z-index: 0;
+      animation: float-orb 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes float-orb {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-40px, 30px, 0) scale(1.06); }
+      100% { transform: translate3d(-10px, -20px, 0) scale(1.02); }
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2.5rem;
+      align-items: center;
+      padding-top: 3rem;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(2.3rem, 5vw, 3.3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(120deg, #e5e7eb, #a5b4fc, #38bdf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 30rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.18), transparent);
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .hero-stat span {
+      display: block;
+    }
+
+    .hero-stat strong {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #111827, #020617 65%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(31, 41, 55, 0.9);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      margin-bottom: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hero-chip {
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(96, 165, 250, 0.9);
+      background: rgba(37, 99, 235, 0.22);
+      color: #bfdbfe;
+      font-size: 0.7rem;
+    }
+
+    .hero-preview {
+      border-radius: 1rem;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: radial-gradient(circle at top, rgba(59, 130, 246, 0.24), #020617);
+      padding: 0.9rem;
+    }
+
+    .timeline {
+      height: 140px;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+      background: linear-gradient(135deg, #020617, #020617);
+      padding: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .timeline-header,
+    .timeline-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .ping-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.25);
+    }
+
+    .timeline-bars {
+      display: flex;
+      gap: 0.18rem;
+      align-items: flex-end;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-bar {
+      flex: 1;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.9);
+      position: relative;
+    }
+
+    .timeline-bar span {
+      display: block;
+      width: 100%;
+      border-radius: 999px 999px 0 0;
+      background: linear-gradient(to top, #4f46e5, #22d3ee);
+      height: var(--h, 50%);
+      transform-origin: bottom;
+      transform: scaleY(0.15);
+      animation: grow-bar 1.1s ease-out forwards;
+    }
+
+    @keyframes grow-bar {
+      0% { transform: scaleY(0.15); }
+      100% { transform: scaleY(1); }
+    }
+
+    .hero-tag {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* SECTIONS */
+
+    section {
+      margin-top: 4rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #020617, #020617 60%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 1.3rem 1.4rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0) scale(1);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(129, 140, 248, 0.9);
+      box-shadow: 0 30px 80px rgba(15, 23, 42, 0.95);
+      background: radial-gradient(circle at top left, #020617, #020617 30%);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.4rem;
+    }
+
+    .pill {
+      font-size: 0.74rem;
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(31, 41, 55, 0.9);
+      color: #e5e7eb;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+    }
+
+    /* WHY CHOOSE US */
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .why-point-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .why-point-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(129, 140, 248, 0.5), rgba(15, 23, 42, 0.95));
+      font-size: 0.8rem;
+    }
+
+    /* TESTIMONIALS */
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .testimonial {
+      position: relative;
+      padding: 1.3rem 1.4rem;
+      border-radius: 1.2rem;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #020617, #020617 70%);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .testimonial::before {
+      content: "“";
+      position: absolute;
+      top: 0.5rem;
+      left: 0.9rem;
+      font-size: 2rem;
+      color: rgba(129, 140, 248, 0.5);
+    }
+
+    .testimonial-footer {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .testimonial-tag {
+      font-size: 0.74rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.7fr);
+      gap: 1.6rem;
+    }
+
+    .contact-card {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-card strong {
+      color: var(--text);
+    }
+
+    .contact-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.9rem 0;
+    }
+
+    .contact-chip {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      color: #e5e7eb;
+    }
+
+    .contact-links p {
+      margin-bottom: 0.35rem;
+      font-size: 0.86rem;
+    }
+
+    .contact-links a {
+      color: #bfdbfe;
+      text-decoration: underline;
+    }
+
+    form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.15rem;
+      color: var(--muted);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.55rem 0.75rem;
+      border-radius: 0.9rem;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      outline: none;
+      font-size: 0.84rem;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(96, 165, 250, 0.9);
+      box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.8);
+    }
+
+    textarea {
+      min-height: 80px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .form-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.3rem;
+      right: 1.3rem;
+      background: rgba(15, 23, 42, 0.98);
+      border-radius: 0.9rem;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      font-size: 0.8rem;
+      color: #bbf7d0;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* FAQ */
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.7rem;
+    }
+
+    .faq-item {
+      background: radial-gradient(circle at top left, #020617, #020617 70%);
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-q:hover {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .faq-icon {
+      font-size: 1.1rem;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1rem;
+      background: rgba(15, 23, 42, 0.96);
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      transition: max-height 0.25s ease, padding 0.25s ease;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .faq-a p {
+      padding: 0.7rem 0 0.85rem;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 220px;
+      padding: 0 1rem 0.7rem;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      padding-bottom: 1.2rem;
+    }
+
+    footer span {
+      color: #e5e7eb;
+    }
+
+    /* REVEAL ANIMATIONS */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(0.985);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .reveal[data-delay="1"] { transition-delay: 0.08s; }
+    .reveal[data-delay="2"] { transition-delay: 0.16s; }
+    .reveal[data-delay="3"] { transition-delay: 0.24s; }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+      .container {
+        padding-inline: 1rem;
+      }
+      .hero {
+        padding-top: 2.4rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+      }
+      .glow-orb {
+        display: none;
+      }
+      body {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-orb"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">Opening WhatsApp…</div>
+
+  <!-- HEADER -->
+  <header>
+    <nav class="nav">
+      <div class="nav-left">
+        <div class="logo-pill">
+          <img src="logo-prabawebs.png" alt="PRABA WEBS logo" class="logo-img">
+        </div>
+        <div class="logo-sub">
+          Modern websites for serious businesses
+        </div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#top" data-link class="active">Home</a>
+        <a href="#services" data-link>Services</a>
+        <a href="#process" data-link>Process</a>
+        <a href="#why" data-link>Why us</a>
+        <a href="#faq" data-link>FAQ</a>
+        <a href="#contact" data-link>Contact</a>
+      </div>
+
+      <a
+        href="https://wa.me/919944136436?text=Hi%20Praba%2C%20I%E2%80%99m%20interested%20in%20a%20website%20for%20my%20business."
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+      >
+        WhatsApp: +91 99441 36436
+      </a>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" id="top">
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="hero-left">
+        <h1>
+          <span class="hero-gradient">Serious websites</span><br />
+          for businesses that want to look professional.
+        </h1>
+        <p class="hero-subtitle">
+          PRABA WEBS designs fast, mobile-first websites that make your
+          business look established, trustworthy and easy to contact —
+          even if you’re just getting started online.
+        </p>
+
+        <div class="hero-badges">
+          <span class="badge">Business & service websites</span>
+          <span class="badge">Landing / offer pages</span>
+          <span class="badge">Portfolio & personal brands</span>
+          <span class="badge">Domain & basic SEO setup</span>
+        </div>
+
+        <div class="hero-actions">
+          <a
+            href="https://wa.me/919944136436?text=Hi%20Praba%2C%20I%20need%20a%20website%20for%20my%20business.%20Can%20you%20share%20details%20and%20pricing%3F"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            WhatsApp: +91 99441 36436
+          </a>
+          <button class="btn btn-outline" data-scroll="#services">
+            See what I build
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span><strong>Clean & modern</strong></span>
+            <span>no outdated designs</span>
+          </div>
+          <div class="hero-stat">
+            <span><strong>Mobile-first</strong></span>
+            <span>works great on phones</span>
+          </div>
+          <div class="hero-stat">
+            <span><strong>End-to-end</strong></span>
+            <span>domain, setup & support</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card reveal" data-delay="1">
+          <div class="hero-card-inner">
+            <div class="hero-card-header">
+              <span>Engagement preview</span>
+              <span class="hero-chip">Before → After website</span>
+            </div>
+
+            <div class="hero-preview">
+              <div class="timeline">
+                <div class="timeline-header">
+                  <span>Website trust</span>
+                  <span>Recent visitors</span>
+                </div>
+                <div class="timeline-bars">
+                  <div class="timeline-bar"><span style="--h:42%"></span></div>
+                  <div class="timeline-bar"><span style="--h:88%"></span></div>
+                  <div class="timeline-bar"><span style="--h:67%"></span></div>
+                  <div class="timeline-bar"><span style="--h:95%"></span></div>
+                  <div class="timeline-bar"><span style="--h:72%"></span></div>
+                  <div class="timeline-bar"><span style="--h:50%"></span></div>
+                  <div class="timeline-bar"><span style="--h:90%"></span></div>
+                  <div class="timeline-bar"><span style="--h:60%"></span></div>
+                </div>
+                <div class="timeline-footer">
+                  <div style="display:flex;align-items:center;gap:0.4rem;">
+                    <div class="ping-dot"></div>
+                    <span>Better design → more trust</span>
+                  </div>
+                  <span>+ calls • + WhatsApp leads</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-tag">
+              ⚡ Focused on small & growing businesses that want a serious presence online.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="reveal" data-delay="1">
+      <h2 class="section-title">Website types I build</h2>
+      <p class="section-subtitle">
+        Clear, structured sites that explain who you are, what you offer
+        and how customers can reach you — in a modern, mobile-first layout.
+      </p>
+
+      <div class="services-grid">
+        <article class="card">
+          <h3>Business Websites</h3>
+          <p>
+            A clean, structured site that explains who you are, what you do,
+            and how customers can reach you — clearly and professionally.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Home + About + Services</span>
+            <span class="pill">Contact & WhatsApp</span>
+            <span class="pill">Mobile-first layout</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Landing / Offer Pages</h3>
+          <p>
+            High-conversion pages for specific offers, events or campaigns —
+            perfect for ads or promotions that need one strong page.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Single-page focus</span>
+            <span class="pill">Lead capture</span>
+            <span class="pill">CTA-focused design</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Portfolio & Personal Sites</h3>
+          <p>
+            Simple, modern pages to show your work — design, photography,
+            freelancing, coaching or any personal brand.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Projects & case studies</span>
+            <span class="pill">Clean galleries</span>
+            <span class="pill">Profile-focused</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Technical Setup & Support</h3>
+          <p>
+            Help with domains, basic SEO structure, performance tuning and
+            guiding you through how to use and share your new site.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Domain connection</span>
+            <span class="pill">Basic SEO structure</span>
+            <span class="pill">Ongoing tweaks (by request)</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section id="why" class="reveal" data-delay="1">
+      <h2 class="section-title">Why choose PRABA WEBS</h2>
+      <p class="section-subtitle">
+        A focused, one-to-one service instead of a big agency — without
+        losing the quality and professionalism.
+      </p>
+
+      <div class="why-grid">
+        <article class="card">
+          <h3 class="why-point-title">1. Clean, modern design</h3>
+          <p class="why-point-text">
+            Every site is built to feel current — no outdated layouts or messy
+            colors. Just simple, serious and easy-to-read sections.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 class="why-point-title">2. Mobile-first approach</h3>
+          <p class="why-point-text">
+            Most visitors are on phones. I design from mobile up so your site
+            looks strong on small screens and big displays.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 class="why-point-title">3. Direct communication</h3>
+          <p class="why-point-text">
+            You always speak to the same person. No support tickets, no
+            confusion — quick responses, clear updates.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3 class="why-point-title">4. Simple, honest process</h3>
+          <p class="why-point-text">
+            Clear steps, clear timelines and no over-complicated technical
+            language. You always know what’s happening next.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="reveal" data-delay="1">
+      <h2 class="section-title">How a project usually works</h2>
+      <p class="section-subtitle">
+        Simple, clear steps so you always know what’s happening and what I need from you.
+      </p>
+
+      <div class="process-grid">
+        <article class="card">
+          <div class="step-number">1</div>
+          <h3 style="margin-top:0.6rem;">Short chat & requirements</h3>
+          <p>
+            You tell me about your business, what pages you want and
+            share any examples you like. I suggest the best structure.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="step-number">2</div>
+          <h3 style="margin-top:0.6rem;">Preview & adjustments</h3>
+          <p>
+            I design the first version, share a live preview link and
+            you send your changes. We refine the text and layout together.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="step-number">3</div>
+          <h3 style="margin-top:0.6rem;">Launch & support</h3>
+          <p>
+            Once you’re happy, I connect your domain (if needed), launch
+            the site and help you understand how to share and use it.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="reveal" data-delay="2">
+      <h2 class="section-title">What clients say</h2>
+      <p class="section-subtitle">
+        A few words from people I’ve worked with. You can replace these
+        with real testimonials as you complete more projects.
+      </p>
+
+      <div class="testimonials-grid">
+        <article class="testimonial">
+          <p>
+            Very smooth experience end to end. The final website looks clean,
+            loads quickly and made our business look much more professional online.
+          </p>
+          <div class="testimonial-footer">
+            <span>Business owner • Local service</span>
+            <span class="testimonial-tag">Business website</span>
+          </div>
+        </article>
+
+        <article class="testimonial">
+          <p>
+            Communication was clear and simple. I explained what I wanted
+            in basic terms and the layout, sections and contact flow were
+            done exactly how I imagined.
+          </p>
+          <div class="testimonial-footer">
+            <span>Freelancer • Personal brand</span>
+            <span class="testimonial-tag">Portfolio site</span>
+          </div>
+        </article>
+
+        <article class="testimonial">
+          <p>
+            Appreciated the fast replies and the patience with small changes.
+            The site feels modern and works perfectly on mobile, which is
+            where most of our customers come from.
+          </p>
+          <div class="testimonial-footer">
+            <span>Small shop • Online presence</span>
+            <span class="testimonial-tag">Landing page</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="reveal" data-delay="2">
+      <h2 class="section-title">Frequently asked questions</h2>
+      <p class="section-subtitle">
+        A few quick answers I usually give clients before we start.
+      </p>
+
+      <div class="faq-grid">
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            How long will it take to complete my website?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Most websites are completed within <strong>7–14 days</strong>,
+              depending on content readiness and the number of pages needed.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            What type of websites do you build?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              I build business websites, landing pages, portfolio sites,
+              event pages and simple product / service pages.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            What do I need to provide before starting?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Basic details about your business, your services, contact info,
+              any photos or logo you have, and examples of sites you like.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            Will my site work on phones and desktops?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Yes. Every website is <strong>fully responsive</strong> and
+              tested on phones, tablets and laptops.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            Can I request changes after seeing the first version?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Yes. You can request revisions so we can adjust sections,
+              text and layout until the result matches your expectations.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            Do you help with domain and hosting setup?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Yes. I guide you through buying a domain in your name, and
+              then connect it to the website so it’s live at your address.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            Will my site be SEO-friendly?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Your site will be built with clean structure, fast performance
+              and keyword-ready text to support basic search visibility.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            What if I don’t have a logo or branding yet?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              I can help with simple logo and color suggestions, so your site
+              still looks professional and consistent while you grow.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            How do payments usually work?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Normally it’s <strong>50% upfront</strong> to start the project
+              and 50% after final approval, before we launch the site.
+            </p>
+          </div>
+        </article>
+
+        <article class="faq-item">
+          <button class="faq-q" type="button">
+            Can I update the website later if things change?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>
+              Small changes like text or images can be updated later. For
+              bigger changes we can do a separate update phase.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal" data-delay="3">
+      <h2 class="section-title">Send a quick project request</h2>
+      <p class="section-subtitle">
+        Share a simple outline of what you need. After you submit, WhatsApp
+        will open with your message ready — you just press “Send”.
+      </p>
+
+      <div class="contact-grid">
+        <article class="card contact-card">
+          <p>
+            <strong>Direct contact details</strong>
+          </p>
+
+          <div class="contact-chip-row">
+            <span class="contact-chip">Fast replies</span>
+            <span class="contact-chip">Simple language</span>
+            <span class="contact-chip">Clear pricing</span>
+          </div>
+
+          <div class="contact-links">
+            <p>
+              <strong>Phone:</strong>
+              <a href="tel:+919944136436">+91 99441 36436</a>
+            </p>
+            <p>
+              <strong>WhatsApp:</strong>
+              <a
+                href="https://wa.me/919944136436?text=Hi%20Praba%2C%20I%E2%80%99d%20like%20to%20discuss%20a%20website%20for%20my%20business."
+                target="_blank"
+                rel="noopener"
+              >
+                +91 99441 36436
+              </a>
+            </p>
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:prabakaransuganya11@gmail.com">
+                prabakaransuganya11@gmail.com
+              </a>
+            </p>
+            <p>
+              <strong>Instagram:</strong>
+              <a href="https://instagram.com/praba.webs" target="_blank" rel="noopener">
+                @praba.webs
+              </a>
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <form id="contact-form">
+            <div class="two-col">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" type="text" placeholder="Name" required />
+              </div>
+              <div>
+                <label for="business">Business / brand</label>
+                <input id="business" type="text" placeholder="Business or shop name" />
+              </div>
+            </div>
+
+            <div class="two-col">
+              <div>
+                <label for="websiteType">Website type</label>
+                <input
+                  id="websiteType"
+                  type="text"
+                  placeholder="Business / Landing page / Portfolio"
+                />
+              </div>
+              <div>
+                <label for="budget">Approx. budget</label>
+                <input id="budget" type="text" placeholder="Example: ₹2,000 – ₹5,000" />
+              </div>
+            </div>
+
+            <div>
+              <label for="handle">Where should I reply?</label>
+              <input
+                id="handle"
+                type="text"
+                placeholder="WhatsApp number, Instagram @ or email"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="message">What do you need?</label>
+              <textarea
+                id="message"
+                placeholder="Example: 4-page website with Home, About, Services, Contact and WhatsApp button."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Send via WhatsApp
+            </button>
+            <p class="form-note">
+              After you submit, WhatsApp will open with your enquiry filled in.
+              Check the details and press “Send”.
+            </p>
+          </form>
+        </article>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="reveal" data-delay="3">
+      Built by <span>PRABA WEBS</span> • Modern websites for serious businesses • 2025
+    </footer>
+  </main>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Smooth scroll for [data-scroll] buttons
+    document.querySelectorAll("[data-scroll]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const target = document.querySelector(btn.getAttribute("data-scroll"));
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Ripple effect on buttons
+    document.querySelectorAll(".btn").forEach(btn => {
+      btn.addEventListener("click", e => {
+        const rect = btn.getBoundingClientRect();
+        const ripple = btn.querySelector(".ripple-blob") || document.createElement("span");
+        ripple.className = "ripple-blob";
+        Object.assign(ripple.style, {
+          position: "absolute",
+          borderRadius: "999px",
+          transform: "translate(-50%, -50%)",
+          pointerEvents: "none",
+          background: "rgba(255,255,255,0.35)",
+          width: "0",
+          height: "0",
+          left: (e.clientX - rect.left) + "px",
+          top: (e.clientY - rect.top) + "px",
+          transition: "width 0.4s ease-out, height 0.4s ease-out, opacity 0.45s ease-out",
+          opacity: "0.7",
+          zIndex: "0"
+        });
+        btn.appendChild(ripple);
+        requestAnimationFrame(() => {
+          ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) * 1.8 + "px";
+          ripple.style.opacity = "0";
+        });
+        setTimeout(() => ripple.remove(), 450);
+        btn.classList.add("ripple");
+        setTimeout(() => btn.classList.remove("ripple"), 350);
+      });
+    });
+
+    // Reveal on scroll (smooth)
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Active nav link on scroll
+    const sections = document.querySelectorAll("main section[id]");
+    const navLinks = document.querySelectorAll(".nav-links a[data-link]");
+
+    const setActiveLink = () => {
+      let currentId = "";
+      const offset = window.innerHeight * 0.28;
+
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top - offset <= 0 && rect.bottom - offset > 0) {
+          currentId = sec.id;
+        }
+      });
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href").slice(1);
+        link.classList.toggle("active", href === currentId || (href === "top" && currentId === ""));
+      });
+    };
+
+    window.addEventListener("scroll", setActiveLink);
+    window.addEventListener("load", setActiveLink);
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-q").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.closest(".faq-item");
+        const isOpen = item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item.open").forEach(openItem => {
+          if (openItem !== item) openItem.classList.remove("open");
+        });
+
+        item.classList.toggle("open", !isOpen);
+      });
+    });
+
+    // Contact form -> open WhatsApp with message ready
+    const form = document.getElementById("contact-form");
+    const toast = document.getElementById("toast");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const business = document.getElementById("business").value.trim();
+      const websiteType = document.getElementById("websiteType").value.trim();
+      const budget = document.getElementById("budget").value.trim();
+      const handle = document.getElementById("handle").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      const text =
+`New website enquiry
+
+Name: ${name || "-"}
+Business: ${business || "-"}
+Website type: ${websiteType || "-"}
+Approx. budget: ${budget || "-"}
+
+Reply on: ${handle}
+
+Project idea:
+${message}
+
+(From PRABA WEBS website)`;
+
+      toast.textContent = "Opening WhatsApp…";
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3000);
+
+      const encoded = encodeURIComponent(text);
+      window.open(\`https://wa.me/919944136436?text=\${encoded}\`, "_blank");
+    });
+  </script>
+</body>
+</html>
 
